@@ -5,7 +5,7 @@
     <string name="character_name">Name: %s</string>
     <string name="character_species">Species: %s</string>
     <string name="character_gender">Gender: %s</string>
-    <string name="character_height">Height: %d</string>
+    <string name="character_height">Height: %f</string>
     <string name="character_mass">Mass: %d</string>
     <string name="character_eye_color">Eye Color: %s</string>
     <string name="character_hair_color">Hair Color: %s</string>

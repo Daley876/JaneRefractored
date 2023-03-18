@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Jane Android Interview</string>
+    <string name="error_fetching_list">Unable to fetch data</string>
+    <string name="blank_profile_data">No Data Available For This Character</string>
+    <string name="character_name">Name: %s</string>
+    <string name="character_species">Species: %s</string>
+    <string name="character_gender">Gender: %s</string>
+    <string name="character_height">Height: %d</string>
+    <string name="character_mass">Mass: %d</string>
+    <string name="character_eye_color">Eye Color: %s</string>
+    <string name="character_hair_color">Hair Color: %s</string>
+    <string name="character_skin_color">Skin Color: %s</string>
+    <string name="character_death_location">Place of Birth: %s</string>
+    <string name="character_birth_location">Place of Death: %s</string>
+    <string name="character_home_world">Home World: %s</string>
+    <string name="profile_photo_of_character">Profile Photo of Character</string>
+    <string name="view_profile">View Profile</string>
+
+</resources>

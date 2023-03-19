@@ -24,7 +24,14 @@ class CharactersListFragment : ViewModelFragment() {
         initAdapter()
         initRecyclerView()
         initObserver()
+        initListeners()
         return binding.root
+    }
+
+    private fun initListeners() {
+        binding.refreshBtn.setOnClickListener {
+            viewModel.fetchAllCharacters()
+        }
     }
 
     private fun initObserver() {
@@ -34,6 +41,7 @@ class CharactersListFragment : ViewModelFragment() {
                     binding.apply {
                         progressBar.visibility = View.GONE
                         errorText.visibility = View.GONE
+                        refreshBtn.isClickable = true
                     }
                     val newList = state.response as MutableList<StarWarsCharacter>
                     mAdapter.updateCharacterList(newList)
@@ -43,11 +51,13 @@ class CharactersListFragment : ViewModelFragment() {
                         progressBar.visibility = View.GONE
                         errorText.visibility = View.VISIBLE
                         errorText.text = getString(R.string.error_fetching_list)
+                        refreshBtn.isClickable = true
                     }
                 }
                 is ResponseStates.OnResponseLoading -> {
                     binding.progressBar.visibility = View.VISIBLE
                     binding.errorText.visibility = View.GONE
+                    binding.refreshBtn.isClickable = false
                 }
             }
         }

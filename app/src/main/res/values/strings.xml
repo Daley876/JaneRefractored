@@ -15,5 +15,6 @@
     <string name="character_home_world">Home World: %s</string>
     <string name="profile_photo_of_character">Profile Photo of Character</string>
     <string name="view_profile">View Profile</string>
+    <string name="refresh">Refresh</string>
 
 </resources>

@@ -33,7 +33,7 @@ class StarWarsViewModel @Inject constructor(
         profileDataForCharacter.value = ResponseStates.OnResponseLoading
     }
 
-    private fun fetchAllCharacters() {
+     fun fetchAllCharacters() {
         CoroutineScope(Dispatchers.IO).launch{
             repo.getStarWarsCharactersFromApi().collect { response ->
                 listOfStarWarsCharacters.postValue(response)

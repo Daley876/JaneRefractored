@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.jane.R
 import com.example.jane.databinding.CharactersListFragmentLayoutBinding
 import com.example.jane.models.StarWarsCharacter
@@ -76,12 +77,12 @@ class CharactersListFragment : ViewModelFragment() {
     }
 
     private fun initRecyclerView() {
+        val lmManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = lmManager
             adapter = mAdapter
             setHasFixedSize(true)
+            addItemDecoration(DividerItemDecoration(requireContext(), lmManager.orientation))
         }
-        binding.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),
-            LinearLayoutManager.HORIZONTAL))
     }
 }

@@ -27,7 +27,9 @@ class CharacterAdapter (
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        holder.bind(listOfCharacters[position], viewCurrentCharacter)
+        val sortedCharacterList = listOfCharacters.sortedWith(compareByDescending { it.isFavorite })
+        val currentCharacter = sortedCharacterList[position]
+        holder.bind(currentCharacter, viewCurrentCharacter)
     }
 
     override fun getItemCount(): Int {
@@ -46,16 +48,25 @@ class CharacterAdapter (
         private val species = binding.characterSpecies
         private val profileBtn = binding.profileBtn
         private val profileImg = binding.imageView
-        fun bind(character : StarWarsCharacter, currentChar : (StarWarsCharacter) -> Unit) {
+        private val faveBtn = binding.favoriteMarker
+        fun bind(character : StarWarsCharacter,
+                 currentChar : (StarWarsCharacter) -> Unit) {
             name.text = character.name
             species.text = character.species
             profileBtn.setOnClickListener {
                 currentChar(character)
             }
+            faveBtn.setOnClickListener {
+                val currentVal = character.isFavorite
+                character.isFavorite = !currentVal
+                notifyItemRangeChanged(0,itemCount)
+            }
             Glide.with(profileImg.context)
                 .load(character.image)
                 .error(R.drawable.ic_baseline_error_outline_24)
                 .into(profileImg)
+            if (character.isFavorite) faveBtn.setBackgroundResource(R.drawable.favorite_checked)
+            else faveBtn.setBackgroundResource(R.drawable.favorite_unchecked)
         }
     }
 }

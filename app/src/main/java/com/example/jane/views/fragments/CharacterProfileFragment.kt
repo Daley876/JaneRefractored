@@ -1,4 +1,4 @@
-package com.example.jane.views
+package com.example.jane.views.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

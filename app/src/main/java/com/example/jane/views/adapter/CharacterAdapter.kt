@@ -1,4 +1,4 @@
-package com.example.jane.views
+package com.example.jane.views.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

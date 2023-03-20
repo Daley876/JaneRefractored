@@ -1,7 +1,7 @@
 package com.example.jane.dagger
 
 
-import com.example.jane.views.ViewModelFragment
+import com.example.jane.views.fragments.ViewModelFragment
 import dagger.Component
 import javax.inject.Singleton
 

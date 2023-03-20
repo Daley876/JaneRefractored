@@ -1,4 +1,4 @@
-package com.example.jane.views
+package com.example.jane.views.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import com.example.jane.R
 import com.example.jane.databinding.CharactersListFragmentLayoutBinding
 import com.example.jane.models.StarWarsCharacter
 import com.example.jane.utils.ResponseStates
+import com.example.jane.views.adapter.CharacterAdapter
 
 class CharactersListFragment : ViewModelFragment() {
     private lateinit var binding: CharactersListFragmentLayoutBinding

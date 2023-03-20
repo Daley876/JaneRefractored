@@ -10,8 +10,8 @@
     <string name="character_eye_color">Eye Color: %s</string>
     <string name="character_hair_color">Hair Color: %s</string>
     <string name="character_skin_color">Skin Color: %s</string>
-    <string name="character_death_location">Place of Birth: %s</string>
-    <string name="character_birth_location">Place of Death: %s</string>
+    <string name="character_death_location">Place of Death: %s</string>
+    <string name="character_birth_location">Place of Birth: %s</string>
     <string name="character_home_world">Home World: %s</string>
     <string name="profile_photo_of_character">Profile Photo of Character</string>
     <string name="view_profile">View Profile</string>

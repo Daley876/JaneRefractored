@@ -19,7 +19,7 @@ class StarWarsViewModel @Inject constructor(
         fetchAllCharacters()
     }
 
-    private val listOfStarWarsCharacters: MutableLiveData<ResponseStates> = MutableLiveData()
+    val listOfStarWarsCharacters: MutableLiveData<ResponseStates> = MutableLiveData()
     val listOfCharactersLiveData: LiveData<ResponseStates> get() = listOfStarWarsCharacters
 
     private val profileDataForCharacter: MutableLiveData<ResponseStates> = MutableLiveData()

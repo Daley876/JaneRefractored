@@ -87,8 +87,7 @@ class CharacterProfileFragment : ViewModelFragment() {
                                 )
                             }
 
-                            username.text =
-                                resources.getString(R.string.character_name, starWarsCharacter.name)
+                            username.text = starWarsCharacter.name
 
                             charHeight.text = resources.getString(
                                 R.string.character_height,

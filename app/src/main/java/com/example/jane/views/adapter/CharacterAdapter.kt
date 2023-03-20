@@ -26,9 +26,14 @@ class CharacterAdapter(
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        val sortedCharacterList = listOfCharacters.sortedWith(compareByDescending { it.isFavorite })
+        val sortedCharacterList = sortListByIsFavorite(listOfCharacters)
         val currentCharacter = sortedCharacterList[position]
         holder.bind(currentCharacter, viewCurrentCharacter)
+    }
+
+    private fun sortListByIsFavorite(characterList: MutableList<StarWarsCharacter>)
+    : MutableList<StarWarsCharacter> {
+      return characterList.sortedWith(compareByDescending { it.isFavorite }) as MutableList
     }
 
     override fun getItemCount(): Int {

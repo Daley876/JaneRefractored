@@ -38,18 +38,9 @@ class CharacterAdapter (
     fun updateCharacterList(characters: MutableList<StarWarsCharacter>) {
         listOfCharacters.clear()
         listOfCharacters.addAll(characters)
-        notifyItemRangeInserted(0,itemCount)
+        notifyDataSetChanged()
     }
-    fun addCharacterAsFave(characters: MutableList<StarWarsCharacter>) {
-        listOfCharacters.clear()
-        listOfCharacters.addAll(characters)
-        notifyItemRangeInserted(0,itemCount)
-    }
-    fun removeCharacterAsFave(characters: MutableList<StarWarsCharacter>) {
-        listOfCharacters.clear()
-        listOfCharacters.addAll(characters)
-        notifyItemRangeInserted(0,itemCount)
-    }
+
     inner class CharacterViewHolder(binding : CharactersListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         private val name = binding.characterName
         private val species = binding.characterSpecies

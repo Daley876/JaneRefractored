@@ -39,25 +39,30 @@ class CharactersListFragment : ViewModelFragment() {
         viewModel.listOfCharactersLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is ResponseStates.OnResponseSuccess<*> -> {
+                    val newList = state.response as MutableList<StarWarsCharacter>
+                    mAdapter.updateCharacterList(newList)
                     binding.apply {
                         progressBar.visibility = View.GONE
                         errorText.visibility = View.GONE
                         refreshBtn.isClickable = true
+                        recyclerView.visibility = View.VISIBLE
+                        recyclerView.scrollToPosition(0)
                     }
-                    val newList = state.response as MutableList<StarWarsCharacter>
-                    mAdapter.updateCharacterList(newList)
+
                 }
                 is ResponseStates.OnResponseError -> {
                     binding.apply {
                         progressBar.visibility = View.GONE
+                        recyclerView.visibility = View.GONE
                         errorText.visibility = View.VISIBLE
                         errorText.text = getString(R.string.error_fetching_list)
                         refreshBtn.isClickable = true
                     }
                 }
                 is ResponseStates.OnResponseLoading -> {
-                    binding.progressBar.visibility = View.VISIBLE
                     binding.errorText.visibility = View.GONE
+                    binding.recyclerView.visibility = View.GONE
+                    binding.progressBar.visibility = View.VISIBLE
                     binding.refreshBtn.isClickable = false
                 }
             }

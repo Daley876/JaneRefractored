@@ -2,15 +2,15 @@ package com.example.jane.views
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.jane.models.StarWarsCharacter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.jane.R
 import com.example.jane.databinding.CharactersListItemLayoutBinding
+import com.example.jane.models.StarWarsCharacter
 
-class CharacterAdapter (
-    characterList : MutableList<StarWarsCharacter>, currentCharacter : (StarWarsCharacter) -> Unit
-        ) : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+class CharacterAdapter(
+    characterList: MutableList<StarWarsCharacter>, currentCharacter: (StarWarsCharacter) -> Unit
+) : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
     private val listOfCharacters = characterList
     private val viewCurrentCharacter = currentCharacter
@@ -18,9 +18,8 @@ class CharacterAdapter (
     private lateinit var binding: CharactersListItemLayoutBinding
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-       val context = parent.context
+        val context = parent.context
         val layoutInflater = LayoutInflater.from(context)
         binding = CharactersListItemLayoutBinding.inflate(layoutInflater, parent, false)
         return CharacterViewHolder(binding)
@@ -33,7 +32,7 @@ class CharacterAdapter (
     }
 
     override fun getItemCount(): Int {
-       return listOfCharacters.size
+        return listOfCharacters.size
     }
 
 
@@ -43,14 +42,19 @@ class CharacterAdapter (
         notifyDataSetChanged()
     }
 
-    inner class CharacterViewHolder(binding : CharactersListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CharacterViewHolder(binding: CharactersListItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
         private val name = binding.characterName
         private val species = binding.characterSpecies
         private val profileBtn = binding.profileBtn
         private val profileImg = binding.imageView
         private val faveBtn = binding.favoriteMarker
-        fun bind(character : StarWarsCharacter,
-                 currentChar : (StarWarsCharacter) -> Unit) {
+
+        fun bind(
+            character: StarWarsCharacter,
+            currentChar: (StarWarsCharacter) -> Unit
+        ) {
             name.text = character.name
             species.text = character.species
             profileBtn.setOnClickListener {
@@ -59,12 +63,14 @@ class CharacterAdapter (
             faveBtn.setOnClickListener {
                 val currentVal = character.isFavorite
                 character.isFavorite = !currentVal
-                notifyItemRangeChanged(0,itemCount)
+                notifyItemRangeChanged(0, itemCount)
             }
+
             Glide.with(profileImg.context)
                 .load(character.image)
                 .error(R.drawable.ic_baseline_error_outline_24)
                 .into(profileImg)
+
             if (character.isFavorite) faveBtn.setBackgroundResource(R.drawable.favorite_checked)
             else faveBtn.setBackgroundResource(R.drawable.favorite_unchecked)
         }

@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class StarWarsCharacter(
     @SerializedName("id")
-    val characterId : Int,
+    val characterId: Int,
     var name: String,
     var species: String?,
     val image: String?,
-    var isFavorite : Boolean
+    var isFavorite: Boolean
 )

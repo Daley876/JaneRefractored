@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class StarWarsRepositoryImpl @Inject constructor(
-    private val apiService : CharacterApiService
-) : CharacterDataRepository{
+    private val apiService: CharacterApiService
+) : CharacterDataRepository {
 
     override suspend fun getStarWarsCharactersFromApi(): Flow<ResponseStates> {
         return flow {
@@ -27,7 +27,7 @@ class StarWarsRepositoryImpl @Inject constructor(
                     throw Exception("Error Encountered When Fetching Characters")
                 }
 
-            } catch (e : Exception) {
+            } catch (e: Exception) {
                 emit(ResponseStates.OnResponseError("Error Encountered When Fetching Character List"))
                 Log.e(NETWORK_ERROR_TAG, e.toString())
             }
@@ -48,7 +48,7 @@ class StarWarsRepositoryImpl @Inject constructor(
                     throw Exception("Error Encountered When Fetching Profile Data")
                 }
 
-            } catch (e : Exception) {
+            } catch (e: Exception) {
                 emit(ResponseStates.OnResponseError("Error Encountered When Fetching Profile Data"))
                 Log.e(PROFILE_NETWORK_ERROR_TAG, e.toString())
             }

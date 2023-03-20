@@ -12,8 +12,8 @@ import javax.inject.Inject
 open class ViewModelFragment : Fragment() {
 
     @Inject
-    lateinit var factory : ViewModelFactory
-    protected val viewModel : StarWarsViewModel by activityViewModels {
+    lateinit var factory: ViewModelFactory
+    protected val viewModel: StarWarsViewModel by activityViewModels {
         factory
     }
 

@@ -13,6 +13,6 @@ class App : Application() {
     }
 
     companion object {
-        lateinit var daggerComponent : StarWarsViewModelComponent
+        lateinit var daggerComponent: StarWarsViewModelComponent
     }
 }

@@ -5,5 +5,5 @@ sealed class ResponseStates {
 stages of an API request that will show data*/
     class OnResponseSuccess<T>(val response: T) : ResponseStates()
     object OnResponseLoading : ResponseStates()
-    class OnResponseError(val error : String) : ResponseStates()
+    class OnResponseError(val error: String) : ResponseStates()
 }

@@ -9,6 +9,6 @@ import javax.inject.Singleton
 @Component(modules = [StarWarsViewModelModule::class])
 interface StarWarsViewModelComponent {
 
-    fun inject (vmFragment: ViewModelFragment)
+    fun inject(vmFragment: ViewModelFragment)
 
 }

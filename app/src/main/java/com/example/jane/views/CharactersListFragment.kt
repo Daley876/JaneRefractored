@@ -13,7 +13,7 @@ import com.example.jane.models.StarWarsCharacter
 import com.example.jane.utils.ResponseStates
 
 class CharactersListFragment : ViewModelFragment() {
-    private lateinit var binding : CharactersListFragmentLayoutBinding
+    private lateinit var binding: CharactersListFragmentLayoutBinding
     private lateinit var mAdapter: CharacterAdapter
 
     override fun onCreateView(
@@ -69,7 +69,7 @@ class CharactersListFragment : ViewModelFragment() {
         }
     }
 
-    private fun setCurrentCharacter (character: StarWarsCharacter) {
+    private fun setCurrentCharacter(character: StarWarsCharacter) {
         viewModel.setSelectedStarWarsCharacter(character)
         parentFragmentManager.beginTransaction()
             .replace(R.id.main_fragment_view, CharacterProfileFragment())

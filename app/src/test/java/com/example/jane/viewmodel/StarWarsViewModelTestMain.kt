@@ -31,7 +31,7 @@ class StarWarsViewModelTestMain{
     }
 
     @Test
-    fun `test if character is updated in ViewModel once new character is passed to setCharacter func`() {
+    fun setSelectedStarWarsCharacterTest() {
         val testChar = StarWarsCharacter(1,"Tester","Human","",false)
         viewModel.setSelectedStarWarsCharacter(testChar)
         val updatedCharacter = viewModel.selectedCharacter
@@ -39,7 +39,7 @@ class StarWarsViewModelTestMain{
     }
 
     @Test
-    fun `test get character data list network call function - Success`() {
+    fun `fetchAllCharactersTest - Success`() {
         val response = mutableListOf<StarWarsCharacter>()
         val testChar = StarWarsCharacter(1,"Tester","Human","",false)
         response.add(testChar)
@@ -51,16 +51,17 @@ class StarWarsViewModelTestMain{
         viewModel.fetchAllCharacters()
 
         val actualData = viewModel.listOfStarWarsCharacters.value
-        val expectedData = ResponseStates.OnResponseSuccess(mutableListOf<StarWarsCharacter>())
+        val expectedDataSuccess = ResponseStates.OnResponseSuccess(mutableListOf<StarWarsCharacter>())
+
         when(actualData) {
-            is ResponseStates.OnResponseSuccess<*> -> assertEquals(expectedData, actualData.response as MutableList<StarWarsCharacter>)
+            is ResponseStates.OnResponseSuccess<*> -> assertEquals(expectedDataSuccess, actualData.response as MutableList<StarWarsCharacter>)
             else -> {}
         }
 
     }
 
     @Test
-    fun `test get character data list network call function - Loading`() {
+    fun `fetchAllCharactersTest - Loading`() {
         val responseType = ResponseStates.OnResponseLoading
 
         runBlocking {

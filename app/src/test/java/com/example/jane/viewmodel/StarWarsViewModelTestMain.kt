@@ -50,7 +50,7 @@ class StarWarsViewModelTestMain{
         }
         viewModel.fetchAllCharacters()
 
-        val actualData = viewModel.listOfStarWarsCharacters.value
+        val actualData = viewModel.getCharacterListMutableLiveData()
         val expectedDataSuccess = ResponseStates.OnResponseSuccess(mutableListOf<StarWarsCharacter>())
 
         when(actualData) {
@@ -69,7 +69,7 @@ class StarWarsViewModelTestMain{
         }
         viewModel.fetchAllCharacters()
 
-        val actualData = viewModel.listOfStarWarsCharacters.value
+        val actualData = viewModel.getCharacterListMutableLiveData()
         val expectedData = ResponseStates.OnResponseLoading
 
         when(actualData) {

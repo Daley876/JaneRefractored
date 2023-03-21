@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 interface CharacterDataRepository {
 
     //repository methods that will be overridden as needed
-    suspend fun getStarWarsCharactersFromApi() : Flow<ResponseStates>
-    suspend fun getCharacterProfileFromApi(characterID : String) : Flow<ResponseStates>
+    suspend fun getStarWarsCharactersFromApi(): Flow<ResponseStates>
+    suspend fun getCharacterProfileFromApi(characterID: String): Flow<ResponseStates>
 
 }

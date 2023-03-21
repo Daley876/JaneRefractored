@@ -1,17 +1,20 @@
-package com.example.jane.views
+package com.example.jane.views.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.jane.R
 import com.example.jane.databinding.CharactersListFragmentLayoutBinding
 import com.example.jane.models.StarWarsCharacter
 import com.example.jane.utils.ResponseStates
+import com.example.jane.views.adapter.CharacterAdapter
 
 class CharactersListFragment : ViewModelFragment() {
-    private lateinit var binding : CharactersListFragmentLayoutBinding
+    private lateinit var binding: CharactersListFragmentLayoutBinding
     private lateinit var mAdapter: CharacterAdapter
 
     override fun onCreateView(
@@ -23,36 +26,51 @@ class CharactersListFragment : ViewModelFragment() {
         initAdapter()
         initRecyclerView()
         initObserver()
+        initListeners()
         return binding.root
+    }
+
+    private fun initListeners() {
+        binding.refreshBtn.setOnClickListener {
+            viewModel.fetchAllCharacters()
+        }
     }
 
     private fun initObserver() {
         viewModel.listOfCharactersLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is ResponseStates.OnResponseSuccess<*> -> {
+                    val newList = state.response as MutableList<StarWarsCharacter>
+                    mAdapter.updateCharacterList(newList)
                     binding.apply {
                         progressBar.visibility = View.GONE
                         errorText.visibility = View.GONE
+                        refreshBtn.isClickable = true
+                        recyclerView.visibility = View.VISIBLE
+                        recyclerView.scrollToPosition(0)
                     }
-                    val newList = state.response as MutableList<StarWarsCharacter>
-                    mAdapter.updateCharacterList(newList)
+
                 }
                 is ResponseStates.OnResponseError -> {
                     binding.apply {
                         progressBar.visibility = View.GONE
+                        recyclerView.visibility = View.GONE
                         errorText.visibility = View.VISIBLE
                         errorText.text = getString(R.string.error_fetching_list)
+                        refreshBtn.isClickable = true
                     }
                 }
                 is ResponseStates.OnResponseLoading -> {
-                    binding.progressBar.visibility = View.VISIBLE
                     binding.errorText.visibility = View.GONE
+                    binding.recyclerView.visibility = View.GONE
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.refreshBtn.isClickable = false
                 }
             }
         }
     }
 
-    private fun setCurrentCharacter (character: StarWarsCharacter) {
+    private fun setCurrentCharacter(character: StarWarsCharacter) {
         viewModel.setSelectedStarWarsCharacter(character)
         parentFragmentManager.beginTransaction()
             .replace(R.id.main_fragment_view, CharacterProfileFragment())
@@ -65,10 +83,12 @@ class CharactersListFragment : ViewModelFragment() {
     }
 
     private fun initRecyclerView() {
+        val lmManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = lmManager
             adapter = mAdapter
             setHasFixedSize(true)
+            addItemDecoration(DividerItemDecoration(requireContext(), lmManager.orientation))
         }
     }
 }

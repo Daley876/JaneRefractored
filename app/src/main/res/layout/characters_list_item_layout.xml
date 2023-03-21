@@ -17,7 +17,7 @@
             android:scaleType="fitCenter" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical">
@@ -25,21 +25,40 @@
             <TextView
                 android:id="@+id/character_name"
                 android:layout_width="wrap_content"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:text="@string/character_name" />
 
             <TextView
                 android:id="@+id/character_species"
                 android:layout_marginTop="5dp"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/character_species" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/profile_btn"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_profile" />
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+    <ImageView
+        android:id="@+id/favorite_marker"
+        android:layout_width="40dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="40dp"
+        android:background="@drawable/favorite_unchecked"/>
+</LinearLayout>
 
-            <Button
-                android:id="@+id/profile_btn"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/view_profile" />
         </LinearLayout>
 </LinearLayout>

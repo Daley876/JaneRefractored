@@ -1,7 +1,7 @@
 package com.example.jane.dagger
 
 
-import com.example.jane.views.ViewModelFragment
+import com.example.jane.views.fragments.ViewModelFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -9,6 +9,6 @@ import javax.inject.Singleton
 @Component(modules = [StarWarsViewModelModule::class])
 interface StarWarsViewModelComponent {
 
-    fun inject (vmFragment: ViewModelFragment)
+    fun inject(vmFragment: ViewModelFragment)
 
 }

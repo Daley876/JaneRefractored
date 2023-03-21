@@ -1,4 +1,4 @@
-package com.example.jane.views
+package com.example.jane.views.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,8 +12,8 @@ import javax.inject.Inject
 open class ViewModelFragment : Fragment() {
 
     @Inject
-    lateinit var factory : ViewModelFactory
-    protected val viewModel : StarWarsViewModel by activityViewModels {
+    lateinit var factory: ViewModelFactory
+    protected val viewModel: StarWarsViewModel by activityViewModels {
         factory
     }
 

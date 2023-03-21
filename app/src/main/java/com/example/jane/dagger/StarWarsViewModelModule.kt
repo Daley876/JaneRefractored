@@ -19,7 +19,7 @@ class StarWarsViewModelModule {
 
     @Singleton
     @Provides
-    fun provideNetworkConnection(httpClient : OkHttpClient) : CharacterApiService {
+    fun provideNetworkConnection(httpClient: OkHttpClient): CharacterApiService {
 
         val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -47,18 +47,18 @@ class StarWarsViewModelModule {
 
     @Singleton
     @Provides
-    fun provideStarWarsRepository(apiService : CharacterApiService) : StarWarsRepositoryImpl {
+    fun provideStarWarsRepository(apiService: CharacterApiService): StarWarsRepositoryImpl {
         return StarWarsRepositoryImpl(apiService)
     }
 
     @Singleton
     @Provides
-    fun provideStarWarsViewModel(repo : StarWarsRepositoryImpl) : StarWarsViewModel {
+    fun provideStarWarsViewModel(repo: StarWarsRepositoryImpl): StarWarsViewModel {
         return StarWarsViewModel(repo)
     }
 
     @Provides
-    fun provideViewModelFactory(repo : StarWarsRepositoryImpl) : ViewModelFactory {
+    fun provideViewModelFactory(repo: StarWarsRepositoryImpl): ViewModelFactory {
         return ViewModelFactory(repo)
     }
 }

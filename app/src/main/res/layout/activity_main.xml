@@ -10,7 +10,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fragment_view"
-        android:name="com.example.jane.views.CharactersListFragment"
+        android:name="com.example.jane.views.fragments.CharactersListFragment"
         android:layout_width="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

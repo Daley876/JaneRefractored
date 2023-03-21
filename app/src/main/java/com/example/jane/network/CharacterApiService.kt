@@ -9,8 +9,8 @@ import retrofit2.http.Path
 
 interface CharacterApiService {
     @GET(CHARACTER_LIST_ENDPOINT)
-    suspend fun getAllCharacters() : Response<MutableList<StarWarsCharacter>>
+    suspend fun getAllCharacters(): Response<MutableList<StarWarsCharacter>>
 
     @GET("id/{id}.json")
-    suspend fun getCharacterById(@Path("id") id : String) : Response<StarWarsCharacterProfile>?
+    suspend fun getCharacterById(@Path("id") id: String): Response<StarWarsCharacterProfile>?
 }

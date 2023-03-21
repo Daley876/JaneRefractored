@@ -7,7 +7,7 @@ data class StarWarsCharacterProfile(
     val characterId: Int,
     var name: String,
     val height: Double,
-    val gender: String,
+    var gender: String,
     val mass: Int,
     @SerializedName("bornLocation")
     var bornLocation: String?,
@@ -22,5 +22,5 @@ data class StarWarsCharacterProfile(
     @SerializedName("eye_color")
     var eyeColor: String?,
     @SerializedName("homeworld")
-    var homeWorld: String?,
+    var homeWorld: Any?,
 )

@@ -49,7 +49,7 @@ class CharacterProfileFragment : ViewModelFragment() {
 
                             deathLocation.apply {
                                 val deathText =
-                                    starWarsCharacter.diedLocation ?: "No Death Location Found"
+                                    starWarsCharacter.diedLocation ?: "Unknown"
                                 text = resources.getString(
                                     R.string.character_death_location,
                                     deathText
@@ -58,29 +58,28 @@ class CharacterProfileFragment : ViewModelFragment() {
 
                             bornLocation.apply {
                                 val bornText =
-                                    starWarsCharacter.bornLocation ?: "No Birth Location Found"
+                                    starWarsCharacter.bornLocation ?: "Unknown"
                                 text =
                                     resources.getString(R.string.character_birth_location, bornText)
                             }
 
                             hairColor.apply {
-                                val colorText = starWarsCharacter.hairColor ?: "No Hair Color Found"
+                                val colorText = starWarsCharacter.hairColor ?: "Unknown"
                                 text = resources.getString(R.string.character_hair_color, colorText)
                             }
 
                             skinColor.apply {
-                                val colorText = starWarsCharacter.skinColor ?: "No Skin Color Found"
+                                val colorText = starWarsCharacter.skinColor ?: "Unknown"
                                 text = resources.getString(R.string.character_skin_color, colorText)
                             }
 
                             eyeColor.apply {
-                                val colorText = starWarsCharacter.eyeColor ?: "No Eye Color Found"
+                                val colorText = starWarsCharacter.eyeColor ?: "Unknown"
                                 text = resources.getString(R.string.character_eye_color, colorText)
                             }
 
                             homeWorld.apply {
-                                val homeWorldText =
-                                    starWarsCharacter.homeWorld ?: "No Home World Found"
+                                val homeWorldText = starWarsCharacter.homeWorld ?: "Unknown"
                                 text = resources.getString(
                                     R.string.character_home_world,
                                     homeWorldText

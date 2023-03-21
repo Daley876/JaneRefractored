@@ -32,8 +32,8 @@ class CharacterAdapter(
     }
 
     private fun sortListByIsFavorite(characterList: MutableList<StarWarsCharacter>)
-    : MutableList<StarWarsCharacter> {
-      return characterList.sortedWith(compareByDescending { it.isFavorite }) as MutableList
+            : MutableList<StarWarsCharacter> {
+        return characterList.sortedWith(compareByDescending { it.isFavorite }) as MutableList
     }
 
     override fun getItemCount(): Int {
@@ -60,8 +60,8 @@ class CharacterAdapter(
             character: StarWarsCharacter,
             currentChar: (StarWarsCharacter) -> Unit
         ) {
-            name.text = character.name
-            species.text = character.species
+            name.text = character.name.replaceFirstChar { it.uppercase() }
+            species.text = character.species?.replaceFirstChar { it.uppercase() }
             profileBtn.setOnClickListener {
                 currentChar(character)
             }
